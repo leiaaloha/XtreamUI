@@ -103,7 +103,7 @@ if (isset($_POST["submit_stream"])) {
         $rFile = '';
         if (!empty($_POST['m3u_url'])) {
             $rFile = file_get_contents($_POST['m3u_url']);
-        } else if ((!empty($_FILES['m3u_file']['tmp_name'])) && (strtolower(pathinfo($_FILES['m3u_file']['name'], PATHINFO_EXTENSION)) == "m3u")) {
+        } else if ((!empty($_FILES['m3u_file']['tmp_name'])) && (strtolower(pathinfo($_FILES['m3u_file']['name'], PATHINFO_EXTENSION)) == "m3u") || (strtolower(pathinfo($_FILES['m3u_file']['name'], PATHINFO_EXTENSION)) == "m3u8")) {
             $rFile = file_get_contents($_FILES['m3u_file']['tmp_name']);
         }
         preg_match_all('/(?P<tag>#EXTINF:-1)|(?:(?P<prop_key>[-a-z]+)=\"(?P<prop_val>[^"]+)")|(?<name>,[^\r\n]+)|(?<url>http[^\s]+)/', $rFile, $rMatches);
